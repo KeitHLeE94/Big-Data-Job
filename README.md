@@ -1,4 +1,3 @@
-# Big-Data-Job
-At Korea University
+# BigData_Project
 
-빅데이터 청년인재 과제 업로드
+Personal Exercises
