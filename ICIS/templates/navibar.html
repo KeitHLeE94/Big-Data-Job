@@ -11,7 +11,7 @@
 					<!-- logo start -->
 					<div class="col-md-6 text-left">
 						<div class="top-logo">
-							<a href="index.html"><img src="{{ url_for('static', filename='img/logo.gif') }}" alt="" /></a>
+							<a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='img/logo.gif') }}" alt="" /></a>
 						</div>
 					</div>
 					<!-- logo end -->
@@ -106,7 +106,7 @@
 						<div class="mainmenu">
 							<nav>
 								<ul>
-									<li class="expand"><a href="index.html">Home</a>
+									<li class="expand"><a href="{{ url_for('index') }}">Home</a>
 										<ul class="restrain sub-menu">
 											<li><a href="index-2.html">Home 2</a></li>
 											<li><a href="index-3.html">Home 3</a></li>
@@ -117,28 +117,28 @@
 											<li><a href="index-8.html">Home 8</a></li>
 										</ul>
 									</li>
-									<li class="expand"><a href="shop-grid.html">Man</a>
+									<li class="expand"><a href="{{ url_for('shop_grid') }}">Man</a>
 										<div class="restrain mega-menu megamenu1">
 											<span>
-												<a class="mega-menu-title" href="shop-grid.html"> Dresses </a>
-												<a href="shop-grid.html">Coctail</a>
-												<a href="shop-grid.html">Day</a>
-												<a href="shop-grid.html">Evening </a>
-												<a href="shop-grid.html">Sports</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}"> Dresses </a>
+												<a href="{{ url_for('shop_grid') }}">Coctail</a>
+												<a href="{{ url_for('shop_grid') }}">Day</a>
+												<a href="{{ url_for('shop_grid') }}">Evening </a>
+												<a href="{{ url_for('shop_grid') }}">Sports</a>
 											</span>
 											<span>
-												<a class="mega-menu-title" href="shop-grid.html"> Handbags </a>
-												<a href="shop-grid.html">Blazers</a>
-												<a href="shop-grid.html">Table</a>
-												<a href="shop-grid.html">Coats</a>
-												<a href="shop-grid.html">Kids</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}"> Handbags </a>
+												<a href="{{ url_for('shop_grid') }}">Blazers</a>
+												<a href="{{ url_for('shop_grid') }}">Table</a>
+												<a href="{{ url_for('shop_grid') }}">Coats</a>
+												<a href="{{ url_for('shop_grid') }}">Kids</a>
 											</span>
 											<span>
-												<a class="mega-menu-title" href="shop-grid.html"> Clothing </a>
-												<a href="shop-grid.html">T-Shirt</a>
-												<a href="shop-grid.html">Coats</a>
-												<a href="shop-grid.html">Jackets</a>
-												<a href="shop-grid.html">Jeans</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}"> Clothing </a>
+												<a href="{{ url_for('shop_grid') }}">T-Shirt</a>
+												<a href="{{ url_for('shop_grid') }}">Coats</a>
+												<a href="{{ url_for('shop_grid') }}">Jackets</a>
+												<a href="{{ url_for('shop_grid') }}">Jeans</a>
 											</span>
 											<span class="block-last">
 												<img src="{{ url_for('static', filename='img/block_menu.jpg') }}" alt="" />
@@ -148,41 +148,41 @@
 									<li class="expand"><a href="shop-list.html">Women</a>
 										<div class="restrain mega-menu megamenu2">
 											<span>
-												<a class="mega-menu-title" href="shop-grid.html">Rings</a>
-												<a href="shop-grid.html">Coats & Jackets</a>
-												<a href="shop-grid.html">Blazers</a>
-												<a href="shop-grid.html">Jackets</a>
-												<a href="shop-grid.html">Rincoats</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}">Rings</a>
+												<a href="{{ url_for('shop_grid') }}">Coats & Jackets</a>
+												<a href="{{ url_for('shop_grid') }}">Blazers</a>
+												<a href="{{ url_for('shop_grid') }}">Jackets</a>
+												<a href="{{ url_for('shop_grid') }}">Rincoats</a>
 											</span>
 											<span>
-												<a class="mega-menu-title" href="shop-grid.html">Dresses</a>
-												<a href="shop-grid.html">Ankle Boots</a>
-												<a href="shop-grid.html">Footwear</a>
-												<a href="shop-grid.html">Clog Sandals</a>
-												<a href="shop-grid.html">Combat Boots</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}">Dresses</a>
+												<a href="{{ url_for('shop_grid') }}">Ankle Boots</a>
+												<a href="{{ url_for('shop_grid') }}">Footwear</a>
+												<a href="{{ url_for('shop_grid') }}">Clog Sandals</a>
+												<a href="{{ url_for('shop_grid') }}">Combat Boots</a>
 											</span>
 											<span>
-												<a class="mega-menu-title" href="shop-grid.html">Accessories</a>
-												<a href="shop-grid.html">Bootees bags</a>
-												<a href="shop-grid.html">Blazers</a>
-												<a href="shop-grid.html">Jackets</a>
-												<a href="shop-grid.html">Shoes</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}">Accessories</a>
+												<a href="{{ url_for('shop_grid') }}">Bootees bags</a>
+												<a href="{{ url_for('shop_grid') }}">Blazers</a>
+												<a href="{{ url_for('shop_grid') }}">Jackets</a>
+												<a href="{{ url_for('shop_grid') }}">Shoes</a>
 											</span>
 											<span class="block-last">
-												<a class="mega-menu-title" href="shop-grid.html">Top</a>
-												<a href="shop-grid.html">Briefs</a>
-												<a href="shop-grid.html">Camis</a>
-												<a href="shop-grid.html">Nigntwears</a>
-												<a href="shop-grid.html">Shapewears</a>
+												<a class="mega-menu-title" href="{{ url_for('shop_grid') }}">Top</a>
+												<a href="{{ url_for('shop_grid') }}">Briefs</a>
+												<a href="{{ url_for('shop_grid') }}">Camis</a>
+												<a href="{{ url_for('shop_grid') }}">Nigntwears</a>
+												<a href="{{ url_for('shop_grid') }}">Shapewears</a>
 											</span>
 										</div>
 									</li>
-									<li class="expand"><a href="shop-grid.html">Shop</a>
+									<li class="expand"><a href="{{ url_for('shop_grid') }}">Shop</a>
 										<div class="restrain mega-menu megamenu4">
 											<span>
 												<a class="mega-menu-title" href="shop-list.html">Shop Pages</a>
 												<a href="shop-list.html">List View </a>
-												<a href="shop-grid.html">Grid View</a>
+												<a href="{{ url_for('shop_grid') }}">Grid View</a>
 												<a href="login.html">My Account</a>
 												<a href="wishlist.html">Wishlist</a>
 												<a href="cart.html">Cart </a>
@@ -206,7 +206,7 @@
 											<li><a href="checkout.html">Checkout</a></li>
 											<li><a href="login.html">Login</a></li>
 											<li><a href="product-details.html">Product Details</a></li>
-											<li><a href="shop-grid.html">Shop Grid</a></li>
+											<li><a href="{{ url_for('shop_grid') }}">Shop Grid</a></li>
 											<li><a href="shop-list.html">Shop List</a></li>
 											<li><a href="cart.html">Shopping cart</a></li>
 											<li><a href="wishlist.html">Wishlist</a></li>
@@ -236,76 +236,76 @@
 													<li><a href="index-8.html">Home 8</a></li>
 												</ul>
 											</li>
-											<li><a href="shop-grid.html">Man</a>
+											<li><a href="{{ url_for('shop_grid') }}">Man</a>
 												<ul>
-													<li><a href="shop-grid.html">Dresses</a>
+													<li><a href="{{ url_for('shop_grid') }}">Dresses</a>
 														<ul>
-															<li><a href="shop-grid.html">Coctail</a></li>
-															<li><a href="shop-grid.html">Day</a></li>
-															<li><a href="shop-grid.html">Evening </a></li>
-															<li><a href="shop-grid.html">Sports</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Coctail</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Day</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Evening </a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Sports</a></li>
 														</ul>
 													</li>
-													<li><a class="mega-menu-title" href="shop-grid.html"> Handbags </a>
+													<li><a class="mega-menu-title" href="{{ url_for('shop_grid') }}"> Handbags </a>
 														<ul>
-															<li><a href="shop-grid.html">Blazers</a></li>
-															<li><a href="shop-grid.html">Table</a></li>
-															<li><a href="shop-grid.html">Coats</a></li>
-															<li><a href="shop-grid.html">Kids</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Blazers</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Table</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Coats</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Kids</a></li>
 														</ul>
 													</li>
-													<li><a class="mega-menu-title" href="shop-grid.html"> Clothing </a>
+													<li><a class="mega-menu-title" href="{{ url_for('shop_grid') }}"> Clothing </a>
 														<ul>
-															<li><a href="shop-grid.html">T-Shirt</a></li>
-															<li><a href="shop-grid.html">Coats</a></li>
-															<li><a href="shop-grid.html">Jackets</a></li>
-															<li><a href="shop-grid.html">Jeans</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">T-Shirt</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Coats</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Jackets</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Jeans</a></li>
 														</ul>
 													</li>
 												</ul>
 											</li>
 											<li><a href="shop-list.html">Women</a>
 												<ul>
-													<li><a href="shop-grid.html">Rings</a>
+													<li><a href="{{ url_for('shop_grid') }}">Rings</a>
 														<ul>
-															<li><a href="shop-grid.html">Coats & Jackets</a></li>
-															<li><a href="shop-grid.html">Blazers</a></li>
-															<li><a href="shop-grid.html">Jackets</a></li>
-															<li><a href="shop-grid.html">Rincoats</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Coats & Jackets</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Blazers</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Jackets</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Rincoats</a></li>
 														</ul>
 													</li>
-													<li><a href="shop-grid.html">Dresses</a>
+													<li><a href="{{ url_for('shop_grid') }}">Dresses</a>
 														<ul>
-															<li><a href="shop-grid.html">Ankle Boots</a></li>
-															<li><a href="shop-grid.html">Footwear</a></li>
-															<li><a href="shop-grid.html">Clog Sandals</a></li>
-															<li><a href="shop-grid.html">Combat Boots</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Ankle Boots</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Footwear</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Clog Sandals</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Combat Boots</a></li>
 														</ul>
 													</li>
-													<li><a href="shop-grid.html">Accessories</a>
+													<li><a href="{{ url_for('shop_grid') }}">Accessories</a>
 														<ul>
-															<li><a href="shop-grid.html">Bootees bags</a></li>
-															<li><a href="shop-grid.html">Blazers</a></li>
-															<li><a href="shop-grid.html">Jackets</a></li>
-															<li><a href="shop-grid.html">Jackets</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Bootees bags</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Blazers</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Jackets</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Jackets</a></li>
 														</ul>
 													</li>
-													<li><a href="shop-grid.html">Top</a>
+													<li><a href="{{ url_for('shop_grid') }}">Top</a>
 														<ul>
-															<li><a href="shop-grid.html">Briefs</a></li>
-															<li><a href="shop-grid.html">Camis</a></li>
-															<li><a href="shop-grid.html">Nigntwears</a></li>
-															<li><a href="shop-grid.html">Shapewears</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Briefs</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Camis</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Nigntwears</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Shapewears</a></li>
 														</ul>
 													</li>
 												</ul>
 											</li>
-											<li><a href="shop-grid.html">Shop</a>
+											<li><a href="{{ url_for('shop_grid') }}">Shop</a>
 												<ul>
 													<li><a href="shop-list.html">Shop Pages</a>
 														<ul>
 															<li><a href="shop-list.html">List View </a></li>
-															<li><a href="shop-grid.html">Grid View</a></li>
+															<li><a href="{{ url_for('shop_grid') }}">Grid View</a></li>
 															<li><a href="login.html">My Account</a></li>
 															<li><a href="wishlist.html">Wishlist</a></li>
 															<li><a href="cart.html">Cart </a></li>
@@ -326,7 +326,7 @@
 											</li>
 											<li><a href="#">Pages</a>
 												<ul>
-													<li><a href="shop-grid.html">Shop Grid</a></li>
+													<li><a href="{{ url_for('shop_grid') }}">Shop Grid</a></li>
 													<li><a href="shop-list.html">Shop List</a></li>
 													<li><a href="product-details.html">Product Details</a></li>
 													<li><a href="contact-us.html">Contact Us</a></li>
