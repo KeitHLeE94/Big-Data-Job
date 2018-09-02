@@ -1,411 +1,545 @@
 {% extends "base.html" %}
 {% block content %}
-        <!-- product section start -->
-		<div class="our-product-area new-product">
-			<div class="container">
-				<div class="area-title">
-					<h2>New products</h2>
-				</div>
-				<!-- our-product area start -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="features-curosel">
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-1.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-2.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$200.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Donec ac tempus</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-5.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-6.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$300.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Primis in faucibus</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-9.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-10.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$270.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Voluptas nulla</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
+    <p id="demo"></p>
+    <div id="mapholdder"></div>
+    <script>
+        var x = document.getElementById("demo");
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        function showPosition(position) {
+            {#x.innerHTML = "Latitude: " + position.coords.latitude +#}
+            {#    "<br>Longitude: " + position.coords.longitude;#}
+            $.ajax({
+                type: "POST",
+                url: "/regVisitor",
+                data: {lat: position.coords.latitude, lng: position.coords.longitude},
+                beforeSend: function (xhr) {
+                    //console.log("ok it was " + data);
+                    console.log(this.data);
+                }
+            });
+        }
+    </script>
+    <!-- product section start -->
+    <div class="our-product-area new-product">
+        <div class="container">
+            <div class="area-title">
+                <h2>New products</h2>
+            </div>
+            <!-- our-product area start -->
+            {% if id %}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="features-curosel">
+                                <!-- single-product start -->
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single-product first-sale">
+                                        <div class="product-img">
+                                            <a href="{{ milkpowderResult[3] }}">
+                                                <img class="primary-image" src="{{ milkpowderResult[1] }}" alt="" />
+                                                <img class="secondary-image" src="{{ milkpowderResult[1] }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <h2 class="product-name"><a href="{{ milkpowderResult[3] }}">{{ milkpowderResult[0] }}</a></h2>
+                                            <p>{{ milkpowderResult[2] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single-product end -->
+                                <!-- single-product start -->
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single-product first-sale">
+                                        <div class="product-img">
+                                            <a href="{{ diaperResult[3] }}">
+                                                <img class="primary-image" src="{{ diaperResult[1] }}" alt="" />
+                                                <img class="secondary-image" src="{{ diaperResult[1] }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <h2 class="product-name"><a href="{{ diaperResult[3] }}">{{ diaperResult[0] }}</a></h2>
+                                            <p>{{ diaperResult[2] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single-product end -->
+                                <!-- single-product start -->
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single-product first-sale">
+                                        <div class="product-img">
+                                            <a href="{{ snackResult[3] }}">
+                                                <img class="primary-image" src="{{ snackResult[1] }}" alt="" />
+                                                <img class="secondary-image" src="{{ snackResult[1] }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <h2 class="product-name"><a href="{{ snackResult[3] }}">{{ snackResult[0] }}</a></h2>
+                                            <p>{{ snackResult[2] }}</p>
+                                        </div>
+                                    </div>
 
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-13.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-1.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$340.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Cras neque metus</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<span class="sale-text">Sale</span>
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-4.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-5.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$360.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Occaecati cupiditate</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-8.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-9.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$400.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Accumsan elit</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-11.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-12.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$280.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Pellentesque habitant</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-								<!-- single-product start -->
-								<div class="col-lg-12 col-md-12">
-									<div class="single-product first-sale">
-										<div class="product-img">
-											<a href="#">
-												<img class="primary-image" src="{{ url_for('static', filename='img/products/product-11.jpg') }}" alt="" />
-												<img class="secondary-image" src="{{ url_for('static', filename='img/products/product-2.jpg') }}" alt="" />
-											</a>
-											<div class="action-zoom">
-												<div class="add-to-cart">
-													<a href="#" title="Quick View"><i class="fa fa-search-plus"></i></a>
-												</div>
-											</div>
-											<div class="actions">
-												<div class="action-buttons">
-													<div class="add-to-links">
-														<div class="add-to-wishlist">
-															<a href="#" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-														</div>
-														<div class="compare-button">
-															<a href="#" title="Add to Cart"><i class="icon-bag"></i></a>
-														</div>
-													</div>
-													<div class="quickviewbtn">
-														<a href="#" title="Add to Compare"><i class="fa fa-retweet"></i></a>
-													</div>
-												</div>
-											</div>
-											<div class="price-box">
-												<span class="new-price">$222.00</span>
-											</div>
-										</div>
-										<div class="product-content">
-											<h2 class="product-name"><a href="#">Donec ac tempus</a></h2>
-											<p>Nunc facilisis sagittis ullamcorper...</p>
-										</div>
-									</div>
-								</div>
-								<!-- single-product end -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- our-product area end -->
-			</div>
-		</div>
-		<!-- product section end -->
-		<!-- unit banner area start -->
-		<div class="unit-banner-area">
-			<div class="container-fluid">
-				<div class="row banner-row">
-					<div class="col-md-8 col-sm-8 col-xs-12 nopadding">
-						<!-- single banner start -->
-						<div class="single-banner single-big">
-							<a href="#"><img src="{{ url_for('static', filename='img/banner/home8-banner-1.jpg') }}" alt="" /></a>
-						</div>
-						<!-- single banner end -->
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-12 mrg-tm nopadding">
-						<!-- single banner start -->
-						<div class="single-banner sn-sm">
-							<a href="#"><img src="{{ url_for('static', filename='img/banner/home8-banner-2.jpg') }}" alt="" /></a>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-4 col-xs-12 nopadding">
-						<!-- single banner start -->
-						<div class="single-banner sn-sm">
-							<a href="#"><img src="{{ url_for('static', filename='img/banner/home8-banner-3.jpg') }}" alt="" /></a>
-						</div>
-						<!-- single banner end -->
-					</div>
-					<div class="col-md-8 col-sm-8 col-xs-12 mrg-tm nopadding">
-						<!-- single banner start -->
-						<div class="single-banner single-big-btm">
-							<a href="#"><img src="{{ url_for('static', filename='img/banner/home8-banner-4.jpg') }}" alt="" /></a>
-						</div>
-						<!-- single banner end -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- unit banner area end -->
-        <!-- perfect service area start -->
-		<div class="perfect-service">
-			<div class="container">
-				<div class="row">
-					<div class="creative-banner">
-						<div class="col-md-4 creative-info">
-							<div class="creative-icon">
-								<i class="fa fa-plane"></i>
-							</div>
-							<div class="creative-text">
-								<h3>FREE SHIPPING ALL ORDER</h3>
-								<p>Free Shipping on many order (3-5 bussiness days). Return after 30 days.</p>
-							</div>
-						</div>
-						<div class="col-md-4 creative-info">
-							<div class="creative-icon">
-								<i class="fa fa-history "></i>
-							</div>
-							<div class="creative-text">
-								<h3>24/07 SUPPORT HOUR</h3>
-								<p>Support Chanel is open 24/07 and ready to offer quality services.</p>
-							</div>
-						</div>
-						<div class="col-md-4 creative-info">
-							<div class="creative-icon">
-								<i class="fa fa-lightbulb-o"></i>
-							</div>
-							<div class="creative-text">
-								<h3>UNIQUE PRODUCTS</h3>
-								<p>We bring to you the best products with unique design, trending and the best quality.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- perfect service area end -->
+                                </div>
+                                <!-- single-product end -->
+                                <!-- single-product start -->
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="single-product first-sale">
+                                        <div class="product-img">
+                                            <a href="{{ toyResult[3] }}">
+                                                <img class="primary-image" src="{{ toyResult[1] }}" alt="" />
+                                                <img class="secondary-image" src="{{ toyResult[1] }}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="product-content">
+                                            <h2 class="product-name"><a href="{{ toyResult[3] }}">{{ toyResult[0] }}</a></h2>
+                                            <p>{{ toyResult[2] }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- single-product end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- our-product area end -->
+        </div>
+    </div>
+    <!-- product section end -->
+    <!-- unit banner area start -->
+    <div class="unit-banner-area">
+        <div class="container-fluid">
+            <div class="row banner-row">
+                <div class="col-md-8 col-sm-8 col-xs-12 nopadding">
+                    <!-- single banner start -->
+                    <div class="single-banner single-big">
+                        <a href="{{ url_for('productList_diaper', page=1) }}"><img src="{{ url_for('static', filename='img/product_banner.jpg') }}" alt="" /></a>
+                    </div>
+                    <!-- single banner end -->
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 mrg-tm nopadding">
+                    <!-- single banner start -->
+                    <div class="single-banner sn-sm">
+                        <a href="{{ url_for('activityList', page=1) }}"><img src="{{ url_for('static', filename='img/activity_banner.jpg') }}" alt="" /></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-12 nopadding">
+                    <!-- single banner start -->
+                    <div class="single-banner sn-sm" style="text-align: center">
+                        <label><h2>질병별 분류</h2></label>
+                        {#                            <ul>#}
+                        {#                                <li><a href="{{ url_for('diseaseList', id='asdf') }}">ㅎㅇ</a></li>#}
+                        {#                            </ul>#}
+                        {#                     <a href="#"><img src="{{ url_for('static', filename='img/banner/home8-banner-3.jpg') }}" alt="" /></a>#}
+                    </div>
+                    <!-- single banner end -->
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-12 mrg-tm">
+                    <!-- single banner start -->
+                    {#                        <div id="map" class="single-banner single-big-btm"></div>#}
+                    <div id="map" class="single-banner single-big-btm" style="width:930px;height:530px;padding-right:5px;"></div>
+                    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d09b8d66ce7e1980c5da475e82170c0"></script>
+                    <script>
 
+                        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+                            mapOption = {
+                                center: new daum.maps.LatLng(37.5835642, 127.02895470000001), // 지도의 중심좌표
+                                level: 6 // 지도의 확대 레벨
+                            };
+
+                        var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+                        // 마커를 표시할 위치와 title 객체 배열입니다
+                        var positions = [
+                            {
+                                title: '이가정의원',
+                                latlng: new daum.maps.LatLng(37.5659489, 127.0217506)
+                            },
+                            {
+                                title: '튼튼소아과의원',
+                                latlng: new daum.maps.LatLng(37.5769111, 127.0605491)
+                            },
+                            {
+                                title: '최묘경의원',
+                                latlng: new daum.maps.LatLng(37.5891551, 127.0613587)
+                            },
+                            {
+                                title: '강소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5658648, 127.0419603)
+                            },
+                            {
+                                title: '김세진소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.6018031, 127.0404674)
+                            },
+                            {
+                                title: '더드림소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5628767, 127.0162049)
+                            },
+                            {
+                                title: '동심소아과의원',
+                                latlng: new daum.maps.LatLng(37.5566018, 127.0288226)
+                            },
+                            {
+                                title: '경희대학교병원',
+                                latlng: new daum.maps.LatLng(37.5941195, 127.051852)
+                            },
+                            {
+                                title: '국립중앙의료원',
+                                latlng: new daum.maps.LatLng(37.5672138, 127.005671)
+                            },
+                            {
+                                title: '박민규이비인후과의원',
+                                latlng: new daum.maps.LatLng(37.5769213, 127.0152616)
+                            },
+                            {
+                                title: '김선영소아과의원',
+                                latlng: new daum.maps.LatLng(37.598903, 127.0220982)
+                            },
+                            {
+                                title: '굿모닝소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.57456129999999, 127.038873)
+                            },
+                            {
+                                title: '단비소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5573015, 127.0285419)
+                            },
+                            {
+                                title: '꿈나무소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.566554, 127.02408340000001)
+                            },
+                            {
+                                title: '서울대학교병원',
+                                latlng: new daum.maps.LatLng(37.5795742, 126.9989953)
+                            },
+                            {
+                                title: '삼성키즈소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.6072048, 127.01948940000001)
+                            },
+                            {
+                                title: '송내과의원',
+                                latlng: new daum.maps.LatLng(37.5988302, 127.0341476)
+                            },
+                            {
+                                title: '우리좋은내과의원',
+                                latlng: new daum.maps.LatLng(37.566554, 127.02408340000001)
+                            },
+                            {
+                                title: '스타이비인후과 ',
+                                latlng: new daum.maps.LatLng(37.6012026, 127.0339557)
+                            },
+                            {
+                                title: '열린산부인과의원',
+                                latlng: new daum.maps.LatLng(37.602483, 127.01690500000001)
+                            },
+                            {
+                                title: '강소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5658648, 127.04196029999999)
+                            },
+                            {
+                                title: '굿모닝이비인후과의원',
+                                latlng: new daum.maps.LatLng(37.6026982, 127.02367360000001)
+                            },
+                            {
+                                title: '김현우내과의원',
+                                latlng: new daum.maps.LatLng(37.576257, 127.05795719999999)
+                            },
+                            {
+                                title: '서울대학교병원',
+                                latlng: new daum.maps.LatLng(37.5795742, 126.9989953)
+                            },
+                            {
+                                title: '박소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5835724, 127.02007900000001)
+                            },
+                            {
+                                title: '소화내과의원',
+                                latlng: new daum.maps.LatLng(37.5778825, 127.0363278)
+                            },
+                            {
+                                title: '사랑아이소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5678251, 127.02505359999998)
+                            },
+                            {
+                                title: '세명성모내과의원',
+                                latlng: new daum.maps.LatLng(37.566847700000004, 127.03076979999999)
+                            },
+                            {
+                                title: '소화연세소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5767415, 127.0157496)
+                            },
+                            {
+                                title: '아이＆I소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.60921939999999, 127.01926709999998)
+                            },
+                            {
+                                title: '아이들소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5605315, 127.0352802)
+                            },
+                            {
+                                title: '연세누리소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5748316, 127.0595904)
+                            },
+                            {
+                                title: '우리가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.5865599, 127.009857)
+                            },
+                            {
+                                title: '이내숙의원',
+                                latlng: new daum.maps.LatLng(37.5865264, 127.0417822)
+                            },
+                            {
+                                title: '키즈쑥쑥소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5993088, 127.0182529)
+                            },
+                            {
+                                title: '우리의원',
+                                latlng: new daum.maps.LatLng(37.5737621, 127.0104619)
+                            },
+                            {
+                                title: '한소아과의원',
+                                latlng: new daum.maps.LatLng(37.6024414, 127.0131088)
+                            },
+                            {
+                                title: '연세의원',
+                                latlng: new daum.maps.LatLng(37.5789029, 127.0501617)
+                            },
+                            {
+                                title: '연세키즈소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5728472, 127.0524399)
+                            },
+                            {
+                                title: '이제룡가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.6098978, 127.0327127)
+                            },
+                            {
+                                title: '365봄이비인후과의원',
+                                latlng: new daum.maps.LatLng(37.6072048, 127.01948940000001)
+                            },
+                            {
+                                title: '굿모닝소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.57456129999999, 127.038873)
+                            },
+                            {
+                                title: '김선영소아과의원',
+                                latlng: new daum.maps.LatLng(37.598903, 127.0220982)
+                            },
+                            {
+                                title: '김장욱가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.60152539999999, 127.03659520000001)
+                            },
+                            {
+                                title: '늘편한내과의원',
+                                latlng: new daum.maps.LatLng(37.5714008, 127.05622109999999)
+                            },
+                            {
+                                title: '더드림소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.562876700000004, 127.0162049)
+                            },
+                            {
+                                title: '박소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5835724, 127.02007900000001)
+                            },
+                            {
+                                title: '세명성모내과의원',
+                                latlng: new daum.maps.LatLng(37.566847700000004, 127.03076979999999)
+                            },
+                            {
+                                title: '서울가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.6026532, 127.031429)
+                            },
+                            {
+                                title: '성북우리아이들병원',
+                                latlng: new daum.maps.LatLng(37.6068633, 127.02935919999999)
+                            },
+                            {
+                                title: '굿모닝소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.57456129999999, 127.038873)
+                            },
+                            {
+                                title: 'SKY서울가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.5958787, 127.0104756)
+                            },
+                            {
+                                title: '이라소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.590193400000004, 127.01479140000001)
+                            },
+                            {
+                                title: '이환구이비인후과의원',
+                                latlng: new daum.maps.LatLng(37.566554, 127.02408340000001)
+                            },
+                            {
+                                title: '참사랑소아과의원',
+                                latlng: new daum.maps.LatLng(37.570262899999996, 127.04201709999998)
+                            },
+                            {
+                                title: '튼튼소아과의원',
+                                latlng: new daum.maps.LatLng(37.576911100000004, 127.06054909999999)
+                            },
+                            {
+                                title: '우리가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.5865599, 127.00985700000001)
+                            },
+                            {
+                                title: '이가정의원',
+                                latlng: new daum.maps.LatLng(37.5659489, 127.0217506)
+                            },
+                            {
+                                title: '이보영소아과의원',
+                                latlng: new daum.maps.LatLng(37.589485700000004, 127.00767579999999)
+                            },
+                            {
+                                title: '삼성키즈소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.6072048, 127.01948940000001)
+                            },
+                            {
+                                title: '경희대학교병원',
+                                latlng: new daum.maps.LatLng(37.5941195, 127.051852)
+                            },
+                            {
+                                title: '늘편한내과의원',
+                                latlng: new daum.maps.LatLng(37.5714008, 127.0562211)
+                            },
+                            {
+                                title: '삼성키즈소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.6072048, 127.0194894)
+                            },
+                            {
+                                title: '박소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.5835724, 127.020079)
+                            },
+                            {
+                                title: '호아맘산부인과의원',
+                                latlng: new daum.maps.LatLng(37.5681723, 127.0373801)
+                            },
+                            {
+                                title: '세명성모내과의원',
+                                latlng: new daum.maps.LatLng(37.5668477, 127.0307698)
+                            },
+                            {
+                                title: '연세의원',
+                                latlng: new daum.maps.LatLng(37.5789029, 127.0501617)
+                            },
+                            {
+                                title: '최와김내과의원',
+                                latlng: new daum.maps.LatLng(37.5914136, 127.0130018)
+                            },
+                            {
+                                title: '서울대학교병원',
+                                latlng: new daum.maps.LatLng(37.5795742, 126.9989953)
+                            },
+                            {
+                                title: '유영삼이비인후과의원',
+                                latlng: new daum.maps.LatLng(37.5703249, 127.0231759)
+                            },
+                            {
+                                title: '김세진소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.601803100000005, 127.04046740000001)
+                            },
+                            {
+                                title: '린내과의원',
+                                latlng: new daum.maps.LatLng(37.563504200000004, 127.01596880000001)
+                            },
+                            {
+                                title: '맘편한내과의원',
+                                latlng: new daum.maps.LatLng(37.58983, 127.0098919)
+                            },
+                            {
+                                title: 'SKY서울가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.5958787, 127.0104756)
+                            },
+                            {
+                                title: '국립중앙의료원',
+                                latlng: new daum.maps.LatLng(37.5672138, 127.00567099999999)
+                            },
+                            {
+                                title: '아리랑가정의원',
+                                latlng: new daum.maps.LatLng(37.601289200000004, 127.0127791)
+                            },
+                            {
+                                title: '삼성키즈소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.6072048, 127.01948940000001)
+                            },
+                            {
+                                title: '성북우리아이들병원',
+                                latlng: new daum.maps.LatLng(37.6068633, 127.02935919999999)
+                            },
+                            {
+                                title: '봄빛서울의원',
+                                latlng: new daum.maps.LatLng(37.5979659, 127.0176255)
+                            },
+                            {
+                                title: '장경호가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.575500299999995, 127.0223451)
+                            },
+                            {
+                                title: '더드림소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.562876700000004, 127.0162049)
+                            },
+                            {
+                                title: '서울대학교병원',
+                                latlng: new daum.maps.LatLng(37.5795742, 126.9989953)
+                            },
+                            {
+                                title: '경희대학교병원',
+                                latlng: new daum.maps.LatLng(37.5941195, 127.051852)
+                            },
+                            {
+                                title: '성북우리아이들병원',
+                                latlng: new daum.maps.LatLng(37.6068633, 127.02935919999999)
+                            },
+                            {
+                                title: '우리가정의학과의원',
+                                latlng: new daum.maps.LatLng(37.5865599, 127.00985700000001)
+                            },
+                            {
+                                title: '스타이비인후과 의원',
+                                latlng: new daum.maps.LatLng(37.6012026, 127.0339557)
+                            },
+                            {
+                                title: '국립중앙의료원',
+                                latlng: new daum.maps.LatLng(37.5672138, 127.00567099999999)
+                            },
+                            {
+                                title: '엘소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.566554, 127.02408340000001)
+                            },
+                            {
+                                title: '송내과의원',
+                                latlng: new daum.maps.LatLng(37.5988302, 127.0341476)
+                            },
+                            {
+                                title: '아이편한소아청소년과의원',
+                                latlng: new daum.maps.LatLng(37.566554, 127.02408340000001)
+                            },
+                        ];
+
+                        // 마커 이미지의 이미지 주소입니다
+                        var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+
+                        for (var i = 0; i < positions.length; i ++) {
+
+                            // 마커 이미지의 이미지 크기 입니다
+                            var imageSize = new daum.maps.Size(24, 35);
+
+                            // 마커 이미지를 생성합니다
+                            var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize);
+
+                            // 마커를 생성합니다
+                            var marker = new daum.maps.Marker({
+                                map: map, // 마커를 표시할 지도
+                                position: positions[i].latlng, // 마커를 표시할 위치
+                                title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                                image : markerImage // 마커 이미지
+                            });
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
